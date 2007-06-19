@@ -14,8 +14,7 @@ License: GPL
 Url: http://newbreedsoftware.com/circus-linux/
 Group: Games/Arcade
 BuildRequires:	SDL_image-devel
-BuildRequires:	XFree86-devel
-BuildRequires:	alsa-lib-devel
+BuildRequires:	libalsa-devel
 BuildRequires:	esound-devel
 BuildRequires:	texinfo
 BuildRoot: %{_tmppath}/%{name}-buildroot
@@ -51,13 +50,14 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall bindir=$RPM_BUILD_ROOT%{_gamesbindir} datadir=$RPM_BUILD_ROOT%{_gamesdatadir}
 
 install -D -m644 mandriva-%{name}.desktop $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop
-install -D -m644 %{name}.menu $RPM_BUILD_ROOT%{_menudir}/%{name}
 install -D -m644 %SOURCE6 $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
 install -D -m644 %SOURCE6 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/%{name}.png
 install -D -m644 %SOURCE5 $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
 install -D -m644 %SOURCE5 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 install -D -m644 %SOURCE7 $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 install -D -m644 %SOURCE7 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/%{name}.png
+
+rm -rf %buildroot%_datadir/doc/circuslinux-1.0.3
 
 %post
 %update_menus
@@ -72,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS.txt CHANGES.txt README.txt
+%doc AUTHORS.txt CHANGES.txt README.txt FAQ.txt README-SDL.txt
 %{_gamesbindir}/%{name}
 %{_gamesdatadir}/%{name}
 %{_datadir}/applications/*
