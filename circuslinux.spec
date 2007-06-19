@@ -1,6 +1,6 @@
 %define name circuslinux
 %define version 1.0.3
-%define release %mkrel 11
+%define release %mkrel 12
 
 Summary: Cute breakout-like game
 Name: %{name}
@@ -29,20 +29,16 @@ a wall.
 %prep
 %setup -q
 
-cat << EOF > %{name}.menu
-?package(%{name}):command="%{_gamesbindir}/%{name}" icon="%{name}.png" needs="x11" section="More Applications/Games/Arcade" title="Circus Linux!" longtitle="Circus Linux!" xdg="true"
-EOF
-
 cat << EOF > mandriva-%{name}.desktop
 [Desktop Entry]
 Encoding=UTF-8
-Name=Circus Linux!
+Name=Circus Linux
 Comment=%{summary}
 Exec=%_gamesbindir/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=Game;ArcadeGame;X-MandrivaLinux-MoreApplications-Games-Arcade;
+Categories=Game;ArcadeGame;
 EOF
 
 %build
@@ -57,14 +53,19 @@ rm -rf $RPM_BUILD_ROOT
 install -D -m644 mandriva-%{name}.desktop $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop
 install -D -m644 %{name}.menu $RPM_BUILD_ROOT%{_menudir}/%{name}
 install -D -m644 %SOURCE6 $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
+install -D -m644 %SOURCE6 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/32x32/apps/%{name}.png
 install -D -m644 %SOURCE5 $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
+install -D -m644 %SOURCE5 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 install -D -m644 %SOURCE7 $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
+install -D -m644 %SOURCE7 $RPM_BUILD_ROOT%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 %post
 %update_menus
+%update_icon_cache hicolor
 
 %postun
 %clean_menus
+%clean_icon_cache hicolor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -75,7 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_gamesbindir}/%{name}
 %{_gamesdatadir}/%{name}
 %{_datadir}/applications/*
-%{_menudir}/*
 %{_iconsdir}/*.png
 %{_miconsdir}/*.png
 %{_liconsdir}/*.png
+%{_iconsdir}/hicolor/16x16/apps/%{name}.png
+%{_iconsdir}/hicolor/32x32/apps/%{name}.png
+%{_iconsdir}/hicolor/48x48/apps/%{name}.png
