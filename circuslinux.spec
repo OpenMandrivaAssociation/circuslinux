@@ -30,7 +30,6 @@ a wall.
 
 cat << EOF > mandriva-%{name}.desktop
 [Desktop Entry]
-Encoding=UTF-8
 Name=Circus Linux
 Comment=%{summary}
 Exec=%_gamesbindir/%{name}
