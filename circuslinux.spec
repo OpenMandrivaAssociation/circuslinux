@@ -17,7 +17,6 @@ BuildRequires:	SDL_image-devel
 BuildRequires:	libalsa-devel
 BuildRequires:	esound-devel
 BuildRequires:	texinfo
-BuildRoot: %{_tmppath}/%{name}-buildroot
 
 %description
 "Circus Linux!" is based on the Atari 2600 game "Circus Atari" by Atari,
