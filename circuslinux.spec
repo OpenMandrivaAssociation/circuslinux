@@ -1,6 +1,6 @@
 %define name circuslinux
 %define version 1.0.3
-%define release %mkrel 15
+%define release %mkrel 16
 
 Summary: Cute breakout-like game
 Name: %{name}
