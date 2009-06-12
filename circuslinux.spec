@@ -1,6 +1,6 @@
 %define name circuslinux
 %define version 1.0.3
-%define release %mkrel 14
+%define release %mkrel 15
 
 Summary: Cute breakout-like game
 Name: %{name}
@@ -10,6 +10,9 @@ Source0: ftp://ftp.sonic.net/pub/users/nbs/unix/x/circus-linux/circuslinux-%{ver
 Source5: %{name}-16.png
 Source6: %{name}-32.png
 Source7: %{name}-48.png
+%ifarch x86_64
+Patch0: %{name}-1.0.3-fix-64bits-build.patch
+%endif
 License: GPLv2
 Url: http://newbreedsoftware.com/circus-linux/
 Group: Games/Arcade
@@ -27,6 +30,9 @@ a wall.
 
 %prep
 %setup -q
+%ifarch x86_64
+%patch0 -p1
+%endif
 
 # fix EOL
 mv README-SDL.txt README-SDL.txt.msdos
