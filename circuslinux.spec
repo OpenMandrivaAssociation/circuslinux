@@ -1,6 +1,6 @@
 %define name circuslinux
 %define version 1.0.3
-%define release %mkrel 13
+%define release %mkrel 14
 
 Summary: Cute breakout-like game
 Name: %{name}
@@ -10,7 +10,7 @@ Source0: ftp://ftp.sonic.net/pub/users/nbs/unix/x/circus-linux/circuslinux-%{ver
 Source5: %{name}-16.png
 Source6: %{name}-32.png
 Source7: %{name}-48.png
-License: GPL
+License: GPLv2
 Url: http://newbreedsoftware.com/circus-linux/
 Group: Games/Arcade
 BuildRequires:	SDL_image-devel
@@ -27,6 +27,10 @@ a wall.
 
 %prep
 %setup -q
+
+# fix EOL
+mv README-SDL.txt README-SDL.txt.msdos
+sed -e 's/\r$//' README-SDL.txt.msdos > README-SDL.txt
 
 cat << EOF > mandriva-%{name}.desktop
 [Desktop Entry]
