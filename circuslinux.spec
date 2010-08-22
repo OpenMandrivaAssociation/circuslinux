@@ -46,7 +46,7 @@ Categories=Game;ArcadeGame;
 EOF
 
 %build
-%configure	--bindir=%{_gamesbindir} \
+%configure2_5x	--bindir=%{_gamesbindir} \
 		--datadir=%{_gamesdatadir}
 %make
 
