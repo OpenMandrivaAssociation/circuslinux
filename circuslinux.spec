@@ -12,7 +12,7 @@ Source6: %{name}-32.png
 Source7: %{name}-48.png
 Patch0: %{name}-1.0.3-fix-64bits-build.patch
 License: GPLv2
-Url: http://newbreedsoftware.com/circus-linux/
+Url: https://newbreedsoftware.com/circus-linux/
 Group: Games/Arcade
 BuildRequires:	SDL_image-devel
 BuildRequires:	libalsa-devel
