@@ -14,6 +14,11 @@ Patch0: %{name}-1.0.3-fix-64bits-build.patch
 License: GPLv2
 Url: https://newbreedsoftware.com/circus-linux/
 Group: Games/Arcade
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	SDL_image-devel
 BuildRequires:	libalsa-devel
 BuildRequires:	esound-devel
